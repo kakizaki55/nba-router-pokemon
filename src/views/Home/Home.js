@@ -5,8 +5,9 @@ import {
   fetchRegionList,
 } from '../../services/fetchdata/fetchdata';
 import PokmeonThumb from '../../components/PokemonThumb/PokemonThumb';
+import PokemonDetails from '../PokemonDeatils/PokemonDetails';
 import Controls from '../../components/Controls/Controls';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 
 export default function Home() {
   const [pokidex, setPokedex] = useState([]);
@@ -37,11 +38,11 @@ export default function Home() {
           handleChange={handleChange}
         ></Controls>
         {pokidex.map((pokemon) => (
-          <>
+          <div key={pokemon.entry_number}>
             <Link to={`${region}/${pokemon.pokemon_species.name}`}>
               <PokmeonThumb pokemon={pokemon} key={pokemon.entry_number} />
             </Link>
-          </>
+          </div>
         ))}
       </div>
     </>

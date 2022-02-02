@@ -7,8 +7,8 @@ import PokemonDetails from './views/PokemonDeatils/PokemonDetails';
 function App() {
   return (
     <Router>
-      <div className="App">
-        <Header></Header>
+      <Header></Header>
+      <div className={style.App}>
         <Switch>
           <Route exact path="/">
             <Home />
