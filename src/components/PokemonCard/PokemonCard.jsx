@@ -3,7 +3,6 @@ import { useHistory } from 'react-router';
 
 export default function PokemonCard({ pokemon }) {
   const history = useHistory();
-
   const { name, weight, types, id } = pokemon;
 
   return (

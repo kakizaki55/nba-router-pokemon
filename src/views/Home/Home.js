@@ -26,10 +26,17 @@ export default function Home() {
   }, []);
   if (loading) return <p>Loading...</p>;
 
+  const handleChange = (e) => {
+    setRegion(e.target.value);
+  };
+
   return (
     <>
       <div>
-        <Controls regionList={regionList} setRegion={setRegion}></Controls>
+        <Controls
+          regionList={regionList}
+          handleChange={handleChange}
+        ></Controls>
         {pokidex.map((pokemon) => (
           <>
             <Link to={`kanto/${pokemon.pokemon_species.name}`}>
