@@ -7,28 +7,30 @@ import {
 import PokmeonThumb from '../../components/PokemonThumb/PokemonThumb';
 import Controls from '../../components/Controls/Controls';
 import { Link } from 'react-router-dom';
-import { createResponseComposition } from 'msw';
 
 export default function Home() {
   const [pokidex, setPokedex] = useState([]);
   const [regionList, setRegionList] = useState('');
   const [region, setRegion] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fectData = async () => {
       const data = await fetchPokedex();
       setPokedex(data);
+      const { results } = await fetchRegionList();
+      setRegionList(results);
+      setLoading(false);
     };
     fectData();
   }, []);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const { results } = await fetchRegionList();
-      setRegionList(results);
-    };
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {};
+  //   fetchData();
+  // }, []);
+
+  if (loading) return <p>Loading...</p>;
 
   return (
     <>
