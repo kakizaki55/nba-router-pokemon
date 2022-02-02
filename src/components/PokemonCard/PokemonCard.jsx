@@ -6,7 +6,7 @@ export default function PokemonCard({ pokemon }) {
   return (
     <div>
       {types ? (
-        types.map((type) => <h1 key={`${type.type.name}`}>{type.type.name}</h1>)
+        types.map(({ type: { name } }) => <h1 key={`${name}`}>{name}</h1>)
       ) : (
         <></>
       )}
