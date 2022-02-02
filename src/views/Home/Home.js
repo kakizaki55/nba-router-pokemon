@@ -11,24 +11,23 @@ import { Link } from 'react-router-dom';
 export default function Home() {
   const [pokidex, setPokedex] = useState([]);
   const [regionList, setRegionList] = useState('');
-  const [region, setRegion] = useState('');
+  const [region, setRegion] = useState('kanto');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fectData = async () => {
-      const data = await fetchPokedex();
+      const data = await fetchPokedex(region);
       setPokedex(data);
       const { results } = await fetchRegionList();
       setRegionList(results);
       setLoading(false);
     };
     fectData();
-  }, []);
-  if (loading) return <p>Loading...</p>;
-
+  }, [region]);
   const handleChange = (e) => {
     setRegion(e.target.value);
   };
+  if (loading) return <p>Loading...</p>;
 
   return (
     <>
@@ -39,7 +38,7 @@ export default function Home() {
         ></Controls>
         {pokidex.map((pokemon) => (
           <>
-            <Link to={`kanto/${pokemon.pokemon_species.name}`}>
+            <Link to={`${region}/${pokemon.pokemon_species.name}`}>
               <PokmeonThumb pokemon={pokemon} key={pokemon.entry_number} />
             </Link>
           </>
