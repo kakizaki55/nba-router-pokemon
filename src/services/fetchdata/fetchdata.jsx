@@ -9,6 +9,12 @@ export const fetchRegionList = async () => {
     'https://pokeapi.co/api/v2/pokedex?offset=0&limit=28'
   );
   const data = await response.json();
-  console.log(data);
+  return data;
+};
+
+export const fetchPokemonByName = async (name) => {
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+  const data = await response.json();
+
   return data;
 };
