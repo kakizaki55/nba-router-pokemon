@@ -24,12 +24,6 @@ export default function Home() {
     };
     fectData();
   }, []);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {};
-  //   fetchData();
-  // }, []);
-
   if (loading) return <p>Loading...</p>;
 
   return (
