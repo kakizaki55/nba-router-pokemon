@@ -6,6 +6,8 @@ import {
 } from '../../services/fetchdata/fetchdata';
 import PokmeonThumb from '../../components/PokemonThumb/PokemonThumb';
 import Controls from '../../components/Controls/Controls';
+import { Link } from 'react-router-dom';
+import { createResponseComposition } from 'msw';
 
 export default function Home() {
   const [pokidex, setPokedex] = useState([]);
@@ -23,20 +25,22 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       const { results } = await fetchRegionList();
-
       setRegionList(results);
     };
     fetchData();
   }, []);
-
-  const handleChange = () => {};
+  console.log(pokidex);
 
   return (
     <>
       <div>
         <Controls regionList={regionList} setRegion={setRegion}></Controls>
         {pokidex.map((pokemon) => (
-          <PokmeonThumb pokemon={pokemon} key={pokemon.entry_number} />
+          <>
+            <Link to={`kanto/${pokemon.pokemon_species.name}`}>
+              <PokmeonThumb pokemon={pokemon} key={pokemon.entry_number} />
+            </Link>
+          </>
         ))}
       </div>
     </>

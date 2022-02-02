@@ -1,12 +1,12 @@
 import React from 'react';
 
-export default function Controls({ regionList, handleChange }) {
+export default function Controls({ regionList }) {
   return (
     <div>
       <select>
         {regionList ? (
           regionList.map(({ name }) => (
-            <option key={name} value={name} onChange={handleChange}>
+            <option key={name} value={name}>
               {name}
             </option>
           ))
