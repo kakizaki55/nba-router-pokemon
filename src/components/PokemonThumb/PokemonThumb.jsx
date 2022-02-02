@@ -11,7 +11,7 @@ export default function PokemonThumb({ pokemon }) {
   return (
     <>
       <div className={style.pokemonCard}>
-        <p>{entry_number}</p>
+        <span>{entry_number}:</span>
         <span>{name}</span>
       </div>
     </>
