@@ -11,13 +11,9 @@ function App() {
       <Header></Header>
       <div className={style.App}>
         <Switch>
-          <Route exact path="/">
+          <Route path="/">
             <Home />
           </Route>
-          <Route path="/:region/:name">
-            <Home />
-          </Route>
-
           <Route path="/items">
             <ItemList></ItemList>
           </Route>

@@ -10,6 +10,7 @@ import { Link, Route, useHistory } from 'react-router-dom';
 import style from './Home.css';
 
 import PokemonDetails from '../PokemonDeatils/PokemonDetails';
+import ItemList from '../ItemList/ItemList';
 
 export default function Home() {
   const [pokidex, setPokedex] = useState([]);
@@ -59,6 +60,9 @@ export default function Home() {
       </div>
       <Route path="/:region/:name">
         <PokemonDetails />
+      </Route>
+      <Route path="/items">
+        <ItemList></ItemList>
       </Route>
     </>
   );
