@@ -1,0 +1,19 @@
+.contorls {
+  display: flex;
+  flex-direction: row;
+  border: black solid 2px;
+  margin: 20px;
+  padding: 10px;
+}
+.itemButton {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.itemButton:hover {
+  color: rgb(64, 64, 191);
+}
+.dropdown {
+  display: flex;
+  align-items: center;
+}

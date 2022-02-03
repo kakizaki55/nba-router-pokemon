@@ -5,15 +5,20 @@ import {
   fetchRegionList,
 } from '../../services/fetchdata/fetchdata';
 import PokmeonThumb from '../../components/PokemonThumb/PokemonThumb';
-import PokemonDetails from '../PokemonDeatils/PokemonDetails';
 import Controls from '../../components/Controls/Controls';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, useHistory } from 'react-router-dom';
+import style from './Home.css';
+
+import PokemonDetails from '../PokemonDeatils/PokemonDetails';
 
 export default function Home() {
   const [pokidex, setPokedex] = useState([]);
   const [regionList, setRegionList] = useState('');
   const [region, setRegion] = useState('kanto');
   const [loading, setLoading] = useState(true);
+  const [itemList, setItemList] = useState();
+
+  const histroy = useHistory();
 
   useEffect(() => {
     const fectData = async () => {
@@ -28,23 +33,33 @@ export default function Home() {
   const handleChange = (e) => {
     setRegion(e.target.value);
   };
+
+  const handleClick = () => {
+    histroy.push('/');
+  };
   if (loading) return <p>Loading...</p>;
 
   return (
     <>
-      <div>
+      <div className={style.pokedex}>
         <Controls
           regionList={regionList}
           handleChange={handleChange}
         ></Controls>
         {pokidex.map((pokemon) => (
           <div key={pokemon.entry_number}>
-            <Link to={`${region}/${pokemon.pokemon_species.name}`}>
+            <Link
+              onClick={handleClick}
+              to={`${region}/${pokemon.pokemon_species.name}`}
+            >
               <PokmeonThumb pokemon={pokemon} key={pokemon.entry_number} />
             </Link>
           </div>
         ))}
       </div>
+      <Route path="/:region/:name">
+        <PokemonDetails />
+      </Route>
     </>
   );
 }

@@ -3,6 +3,7 @@ import style from './App.css';
 import Header from './components/Header/Header';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PokemonDetails from './views/PokemonDeatils/PokemonDetails';
+import ItemList from './views/ItemList/ItemList';
 
 function App() {
   return (
@@ -14,7 +15,11 @@ function App() {
             <Home />
           </Route>
           <Route path="/:region/:name">
-            <PokemonDetails />
+            <Home />
+          </Route>
+
+          <Route path="/items">
+            <ItemList></ItemList>
           </Route>
         </Switch>
       </div>

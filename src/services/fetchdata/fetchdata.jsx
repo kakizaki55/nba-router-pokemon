@@ -16,3 +16,9 @@ export const fetchPokemonByName = async (name) => {
   const data = await response.json();
   return data;
 };
+
+export const fetchItems = async () => {
+  const response = await fetch('https://pokeapi.co/api/v2/item/');
+  const data = await response.json();
+  return data;
+};
