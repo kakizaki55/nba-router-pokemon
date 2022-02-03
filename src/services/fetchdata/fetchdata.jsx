@@ -22,3 +22,9 @@ export const fetchItems = async () => {
   const data = await response.json();
   return data;
 };
+
+export const fetchItemByName = async (selected) => {
+  const response = await fetch(` https://pokeapi.co/api/v2/item/${selected}`);
+  const data = await response.json();
+  return data;
+};
