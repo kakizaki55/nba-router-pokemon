@@ -8,14 +8,11 @@ import ItemList from './views/ItemList/ItemList';
 function App() {
   return (
     <Router>
-      <Header></Header>
+      <Header />
       <div className={style.App}>
         <Switch>
           <Route path="/">
             <Home />
-          </Route>
-          <Route path="/items">
-            <ItemList></ItemList>
           </Route>
         </Switch>
       </div>

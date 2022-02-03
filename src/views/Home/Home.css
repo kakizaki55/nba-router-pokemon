@@ -4,3 +4,9 @@
   align-items: center;
   background-color: rgb(237, 63, 63);
 }
+.pokemonThumbList {
+  overflow-y: auto;
+  height: 600px;
+  width: 210px;
+  border: black solid 2px;
+}

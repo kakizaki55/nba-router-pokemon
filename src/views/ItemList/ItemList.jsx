@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchItems } from '../../services/fetchdata/fetchdata';
 import Item from '../../components/Item/Item';
+import style from './ItemList.css';
 
 export default function ItemList() {
   const [itemList, setItemList] = useState([]);
@@ -14,9 +15,9 @@ export default function ItemList() {
   }, []);
 
   return (
-    <div>
+    <div className={style.itemList}>
       {itemList?.map((item) => (
-        <Item value={item.name} item={item}></Item>
+        <Item item={item} />
       ))}
     </div>
   );

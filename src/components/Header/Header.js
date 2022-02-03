@@ -1,5 +1,9 @@
 import React from 'react';
 
 export default function Header() {
-  return <div>Pokemon Pokedex</div>;
+  return (
+    <div>
+      <h1>Pokemon Pokedex</h1>
+    </div>
+  );
 }

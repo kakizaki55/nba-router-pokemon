@@ -47,16 +47,18 @@ export default function Home() {
           regionList={regionList}
           handleChange={handleChange}
         ></Controls>
-        {pokidex.map((pokemon) => (
-          <div key={pokemon.entry_number}>
-            <Link
-              onClick={handleClick}
-              to={`${region}/${pokemon.pokemon_species.name}`}
-            >
-              <PokmeonThumb pokemon={pokemon} key={pokemon.entry_number} />
-            </Link>
-          </div>
-        ))}
+        <div className={style.pokemonThumbList}>
+          {pokidex.map((pokemon) => (
+            <div key={pokemon.entry_number}>
+              <Link
+                onClick={handleClick}
+                to={`${region}/${pokemon.pokemon_species.name}`}
+              >
+                <PokmeonThumb pokemon={pokemon} key={pokemon.entry_number} />
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
       <Route path="/:region/:name">
         <PokemonDetails />
