@@ -11,6 +11,7 @@ export default function ItemList() {
   const [itemList, setItemList] = useState([]);
   const [selectedItem, setSelectedItem] = useState('');
   const [detailItem, setDetailItem] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const { url } = useRouteMatch();
 
@@ -24,8 +25,13 @@ export default function ItemList() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const results = await fetchItemByName(selectedItem);
-      setDetailItem(results);
+      try {
+        const results = await fetchItemByName(selectedItem);
+        setDetailItem(results);
+        setLoading(false);
+      } catch {
+        setLoading(false);
+      }
     };
     fetchData();
   }, [selectedItem]);
