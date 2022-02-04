@@ -11,8 +11,10 @@ export const fetchRegionList = async () => {
   return data;
 };
 
-export const fetchPokemonByName = async (name) => {
-  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+export const fetchPokemonByName = async (name, signal) => {
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`, {
+    signal: signal,
+  });
   const data = await response.json();
   return data;
 };

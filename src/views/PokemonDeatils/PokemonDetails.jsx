@@ -4,21 +4,30 @@ import { fetchPokemonByName } from '../../services/fetchdata/fetchdata';
 import PokemonCard from '../../components/PokemonCard/PokemonCard';
 
 export default function PokemonDetails() {
-  const { region, name } = useParams();
+  const { name } = useParams();
   const [pokemon, setPokemon] = useState({});
-  const { url, params } = useRouteMatch();
+  const [loading, setLoading] = useState(true);
 
-  console.log(url);
   useEffect(() => {
+    console.log('inside use effect');
     const fetchdata = async () => {
-      const results = await fetchPokemonByName(name);
-      setPokemon(results);
+      try {
+        const results = await fetchPokemonByName(name);
+        setPokemon(results);
+        setLoading(false);
+      } catch {
+        setPokemon('');
+      }
     };
     fetchdata();
   }, [name]);
+
+  if (loading) {
+    return <div>loading...</div>;
+  }
   return (
     <>
-      <PokemonCard pokemon={pokemon}></PokemonCard>
+      <PokemonCard pokemon={pokemon}></PokemonCard>{' '}
     </>
   );
 }

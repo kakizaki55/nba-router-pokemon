@@ -11,7 +11,7 @@
   padding: 10px;
 }
 .itemButton:hover {
-  color: rgb(64, 64, 191);
+  color: #fb1b1b;
 }
 .dropdown {
   display: flex;

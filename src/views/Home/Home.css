@@ -2,11 +2,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(237, 63, 63);
+  background-color: #d5a100;
+  height: auto;
 }
 .pokemonThumbList {
   overflow-y: auto;
   height: 600px;
   width: 210px;
-  border: black solid 2px;
+  border: #0a285f solid 2px;
+}
+.home_Page {
+  margin: 20px;
 }

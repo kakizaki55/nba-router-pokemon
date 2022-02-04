@@ -1,5 +1,6 @@
 .App {
   display: flex;
   flex-direction: row;
-  background-color: crimson;
+  background-color: #0075be;
+  font-family: 'Orbitron', sans-serif;
 }

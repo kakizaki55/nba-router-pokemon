@@ -12,7 +12,7 @@ export default function ItemList() {
   const [selectedItem, setSelectedItem] = useState('');
   const [detailItem, setDetailItem] = useState([]);
 
-  const { url, path } = useRouteMatch();
+  const { url } = useRouteMatch();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,7 +38,6 @@ export default function ItemList() {
       setFetchUrl(itemList.previous);
     }
   };
-  console.log(itemList);
 
   const { results: itemListResults } = itemList;
 

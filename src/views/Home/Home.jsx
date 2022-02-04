@@ -6,19 +6,19 @@ import {
 } from '../../services/fetchdata/fetchdata';
 import PokmeonThumb from '../../components/PokemonThumb/PokemonThumb';
 import Controls from '../../components/Controls/Controls';
-import { Link, Route, useHistory } from 'react-router-dom';
+import { Link, Route, useHistory, useRouteMatch } from 'react-router-dom';
 import style from './Home.css';
 
 import PokemonDetails from '../PokemonDeatils/PokemonDetails';
 import ItemList from '../ItemList/ItemList';
 import { Switch } from 'react-router-dom';
+import HomeDetail from '../../components/HomeDetail/HomeDetail';
 
 export default function Home() {
   const [pokidex, setPokedex] = useState([]);
   const [regionList, setRegionList] = useState('');
   const [region, setRegion] = useState('kanto');
   const [loading, setLoading] = useState(true);
-  const [itemList, setItemList] = useState();
 
   const histroy = useHistory();
 
@@ -39,6 +39,7 @@ export default function Home() {
   const handleClick = () => {
     histroy.push('/');
   };
+
   if (loading) return <p>Loading...</p>;
 
   return (
@@ -61,7 +62,12 @@ export default function Home() {
           ))}
         </div>
       </div>
+
       <Switch>
+        <Route exact path="/">
+          <div className={style.home_Page}>Welcome to the Online Pokedex</div>
+          <HomeDetail />
+        </Route>
         <Route path="/items">
           <ItemList />
         </Route>

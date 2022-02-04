@@ -10,11 +10,9 @@ function App() {
     <Router>
       <Header />
       <div className={style.App}>
-        <Switch>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
+        <Route path="/">
+          <Home />
+        </Route>
       </div>
     </Router>
   );
