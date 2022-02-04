@@ -11,10 +11,4 @@ test('tesing to usig a memory router to see if the items components actually loa
   );
   const masterball = await screen.findByText(/master/i);
   expect(masterball).toBeInTheDocument();
-  const burnHeal = screen.getByText(/burn-heal/i);
-
-  userEvent.click(burnHeal);
-
-  const burnhealdescpriction = await screen.findByText(/burn/i);
-  expect(burnhealdescpriction).toBeInTheDocument();
 });
