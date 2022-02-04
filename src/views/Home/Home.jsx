@@ -11,6 +11,7 @@ import style from './Home.css';
 
 import PokemonDetails from '../PokemonDeatils/PokemonDetails';
 import ItemList from '../ItemList/ItemList';
+import { Switch } from 'react-router-dom';
 
 export default function Home() {
   const [pokidex, setPokedex] = useState([]);
@@ -60,12 +61,14 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <Route path="/:region/:name">
-        <PokemonDetails />
-      </Route>
-      <Route path="/items">
-        <ItemList></ItemList>
-      </Route>
+      <Switch>
+        <Route path="/items">
+          <ItemList />
+        </Route>
+        <Route path="/:region/:name">
+          <PokemonDetails />
+        </Route>
+      </Switch>
     </>
   );
 }
