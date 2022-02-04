@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import ItemList from './ItemList';
 
@@ -9,6 +8,6 @@ test('tesing to usig a memory router to see if the items components actually loa
       <ItemList />
     </MemoryRouter>
   );
-  const masterball = await screen.findByText(/master/i);
+  const masterball = await screen.findByText(/master/i, {}, { timeout: 2000 });
   expect(masterball).toBeInTheDocument();
 });
