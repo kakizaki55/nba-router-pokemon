@@ -12,6 +12,7 @@ export default function ItemList() {
   const [selectedItem, setSelectedItem] = useState('');
   const [detailItem, setDetailItem] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [pageCount, setPageCount] = useState(1);
 
   const { url } = useRouteMatch();
 
@@ -36,10 +37,15 @@ export default function ItemList() {
   const handleClick = (direction) => {
     if (direction === 'next') {
       setFetchUrl(itemList.next);
+      setPageCount((prevState) => {
+        return prevState + 1;
+      });
     } else if (direction === 'prev') {
       setFetchUrl(itemList.previous);
+      setPageCount((prevState) => {
+        return prevState - 1;
+      });
     } else {
-      alert('you are out of pages!');
     }
   };
 
@@ -47,22 +53,27 @@ export default function ItemList() {
 
   return (
     <>
+      <label className={style.pageCount}>
+        page : <span>{pageCount}</span>
+      </label>
       <div className={style.itemList}>
         {itemListResults?.map((item) => (
           <Link to={`${url}/${item.name}`} key={item.name}>
             <Item {...item} setSelectedItem={setSelectedItem} />
           </Link>
         ))}
-        {itemList.previous ? (
-          <button onClick={() => handleClick('prev')}>prev</button>
-        ) : (
-          <></>
-        )}
-        {itemList.next ? (
-          <button onClick={() => handleClick('next')}>next</button>
-        ) : (
-          <></>
-        )}
+        <div className={style.buttons}>
+          {itemList.previous ? (
+            <button onClick={() => handleClick('prev')}>prev</button>
+          ) : (
+            <div className={style.buttonPlace}></div>
+          )}
+          {itemList.next ? (
+            <button onClick={() => handleClick('next')}>next</button>
+          ) : (
+            <div lassName={style.buttonPlace}></div>
+          )}
+        </div>
       </div>
       <Route path={`/items/:itemId`}>
         <ItemDetails {...detailItem} />

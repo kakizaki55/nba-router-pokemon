@@ -14,7 +14,7 @@ import ItemList from '../ItemList/ItemList';
 import { Switch } from 'react-router-dom';
 
 export default function Home() {
-  const [pokidex, setPokedex] = useState([]);
+  const [pokedex, setPokedex] = useState([]);
   const [regionList, setRegionList] = useState('');
   const [region, setRegion] = useState('kanto');
   const [loading, setLoading] = useState(true);
@@ -49,7 +49,7 @@ export default function Home() {
           handleChange={handleChange}
         ></Controls>
         <div className={style.pokemonThumbList}>
-          {pokidex.map((pokemon) => (
+          {pokedex.map((pokemon) => (
             <div key={pokemon.entry_number}>
               <Link
                 onClick={handleClick}
