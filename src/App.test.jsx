@@ -3,18 +3,14 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react-dom/test-utils';
 
-test('making sure the header renders and a list of pokemon who up ion loading', async () => {
+test('combined all the test into one, navigation through out the app like user might.', async () => {
   render(<App />);
   const header = screen.getByText(/pokemon pokedex/i);
   expect(header).toBeInTheDocument();
 
   const pokemonthumb = await screen.findByText(/bulbasaur/i);
   expect(pokemonthumb).toBeInTheDocument();
-});
 
-test('making sure the pokemon details shows up when clicking a thumb nail', async () => {
-  render(<App />);
-  const pokemonthumb = await screen.findByText(/bulbasaur/i);
   userEvent.click(pokemonthumb);
   const type = await screen.findByRole(
     'heading',
@@ -26,15 +22,6 @@ test('making sure the pokemon details shows up when clicking a thumb nail', asyn
   expect(type).toBeInTheDocument();
   expect(lbs).toBeInTheDocument();
   expect(images).toHaveLength(76);
-
-  act(() => {});
-});
-
-test('making sure the item menu functinality works', async () => {
-  render(<App />);
-
-  const pokemonthumb = await screen.findByText(/bulbasaur/i);
-  expect(pokemonthumb).toBeInTheDocument();
 
   const itemButton = screen.getByText(/items/i);
 
