@@ -25,13 +25,9 @@ export default function ItemList() {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const results = await fetchItemByName(selectedItem);
-        setDetailItem(results);
-        setLoading(false);
-      } catch {
-        setLoading(false);
-      }
+      const results = await fetchItemByName(selectedItem);
+      setDetailItem(results);
+      setLoading(false);
     };
     fetchData();
   }, [selectedItem]);
@@ -48,8 +44,6 @@ export default function ItemList() {
   };
 
   const { results: itemListResults } = itemList;
-
-  console.log(detailItem);
 
   return (
     <>
