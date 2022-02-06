@@ -22,14 +22,14 @@ export default function Home() {
   const histroy = useHistory();
 
   useEffect(() => {
-    const fectData = async () => {
+    const fetchData = async () => {
       const data = await fetchPokedex(region);
       setPokedex(data);
       const { results } = await fetchRegionList();
       setRegionList(results);
       setLoading(false);
     };
-    fectData();
+    fetchData();
   }, [region]);
   const handleChange = (e) => {
     setRegion(e.target.value);

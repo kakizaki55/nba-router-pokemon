@@ -40,8 +40,10 @@ export default function ItemList() {
   const handleClick = (direction) => {
     if (direction === 'next') {
       setFetchUrl(itemList.next);
-    } else {
+    } else if (direction === 'prev') {
       setFetchUrl(itemList.previous);
+    } else {
+      alert('you are out of pages!');
     }
   };
 
@@ -57,8 +59,16 @@ export default function ItemList() {
             <Item {...item} setSelectedItem={setSelectedItem} />
           </Link>
         ))}
-        <button onClick={() => handleClick()}>prev</button>
-        <button onClick={() => handleClick('next')}>next</button>
+        {itemList.previous ? (
+          <button onClick={() => handleClick('prev')}>prev</button>
+        ) : (
+          <></>
+        )}
+        {itemList.next ? (
+          <button onClick={() => handleClick('next')}>next</button>
+        ) : (
+          <></>
+        )}
       </div>
       <Route path={`/items/:itemId`}>
         <ItemDetails {...detailItem} />
