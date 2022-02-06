@@ -48,6 +48,7 @@ export default function Home() {
           regionList={regionList}
           handleChange={handleChange}
         ></Controls>
+        <div>{region}</div>
         <div className={style.pokemonThumbList}>
           {pokedex.map((pokemon) => (
             <div key={pokemon.entry_number}>
