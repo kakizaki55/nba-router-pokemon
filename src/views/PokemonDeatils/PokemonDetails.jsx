@@ -9,7 +9,6 @@ export default function PokemonDetails() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log('inside use effect');
     const fetchdata = async () => {
       try {
         const results = await fetchPokemonByName(name);

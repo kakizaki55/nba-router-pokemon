@@ -47,19 +47,21 @@ export default function ItemList() {
 
   const { results: itemListResults } = itemList;
 
+  console.log(detailItem);
+
   return (
     <>
       <div className={style.itemList}>
         {itemListResults?.map((item) => (
           <Link to={`${url}/${item.name}`} key={item.name}>
-            <Item item={item} setSelectedItem={setSelectedItem} />
+            <Item {...item} setSelectedItem={setSelectedItem} />
           </Link>
         ))}
         <button onClick={() => handleClick()}>prev</button>
         <button onClick={() => handleClick('next')}>next</button>
       </div>
       <Route path={`/items/:itemId`}>
-        <ItemDetails detailItem={detailItem} />
+        <ItemDetails {...detailItem} />
       </Route>
     </>
   );

@@ -12,7 +12,6 @@ import style from './Home.css';
 import PokemonDetails from '../PokemonDeatils/PokemonDetails';
 import ItemList from '../ItemList/ItemList';
 import { Switch } from 'react-router-dom';
-import HomeDetail from '../../components/HomeDetail/HomeDetail';
 
 export default function Home() {
   const [pokidex, setPokedex] = useState([]);
@@ -66,7 +65,6 @@ export default function Home() {
       <Switch>
         <Route exact path="/">
           <div className={style.home_Page}>Welcome to the Online Pokedex</div>
-          <HomeDetail />
         </Route>
         <Route path="/items">
           <ItemList />

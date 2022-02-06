@@ -1,11 +1,6 @@
 import App from './App.jsx';
-import {
-  render,
-  screen,
-  waitForElementToBeRemoved,
-} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { MemoryRouter, Route } from 'react-router';
 import { act } from 'react-dom/test-utils';
 
 test('making sure the header renders and a list of pokemon who up ion loading', async () => {

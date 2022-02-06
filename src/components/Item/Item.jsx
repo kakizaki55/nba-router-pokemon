@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { useRouteMatch, Link } from 'react-router-dom';
 import style from './Item.css';
 
-export default function Item({ item, setSelectedItem }) {
-  const { name } = item;
-
+export default function Item({ name, setSelectedItem }) {
   return (
     <div
       className={style.itemThumb}

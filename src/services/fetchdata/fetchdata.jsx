@@ -12,15 +12,13 @@ export const fetchRegionList = async () => {
 };
 
 export const fetchPokemonByName = async (name, signal) => {
-  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`, {
-    signal: signal,
-  });
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`, {});
   const data = await response.json();
   return data;
 };
 
 export const fetchItems = async (fetchUrl) => {
-  const response = await fetch(`${fetchUrl}`);
+  const response = await fetch(fetchUrl);
   const data = await response.json();
   return data;
 };

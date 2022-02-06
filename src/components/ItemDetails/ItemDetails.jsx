@@ -1,9 +1,7 @@
 import React from 'react';
 import style from './ItemDetail.css';
 
-export default function ItemDetails({ detailItem }) {
-  const { name, sprites, effect_entries } = detailItem;
-
+export default function ItemDetails({ name, sprites, effect_entries }) {
   const effect = effect_entries?.[0]?.short_effect;
   return (
     <div>
