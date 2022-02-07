@@ -1,0 +1,16 @@
+.pokedex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #d5a100;
+  height: auto;
+}
+.pokemonThumbList {
+  overflow-y: auto;
+  height: 600px;
+  width: 210px;
+  border: #0a285f solid 2px;
+}
+.home_Page {
+  margin: 20px;
+}

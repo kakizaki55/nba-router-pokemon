@@ -1,0 +1,14 @@
+.img {
+  height: 50px;
+  border: rgb(50, 48, 48) 2px solid;
+  margin: 2px;
+  padding: 2px;
+  background-color: white;
+}
+.button:hover {
+  color: rgb(67, 67, 218);
+}
+.pokemonCard {
+  padding: 30px;
+  color: rgb(26, 27, 31);
+}

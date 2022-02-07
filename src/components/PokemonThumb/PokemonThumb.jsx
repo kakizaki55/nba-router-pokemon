@@ -1,5 +1,4 @@
 import React from 'react';
-
 import style from './PokemonThumb.css';
 
 export default function PokemonThumb({ pokemon }) {
