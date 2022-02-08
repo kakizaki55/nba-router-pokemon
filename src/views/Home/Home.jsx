@@ -11,7 +11,6 @@ import style from './Home.css';
 import PokemonDetails from '../PokemonDeatils/PokemonDetails';
 import ItemList from '../ItemList/ItemList';
 import { Switch } from 'react-router-dom';
-import { SelectedItemProvider } from '../../context/SelectedItemContext';
 
 export default function Home() {
   const [pokedex, setPokedex] = useState([]);

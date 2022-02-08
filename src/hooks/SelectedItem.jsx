@@ -8,6 +8,7 @@ export const useSelectedItem = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     const fetchData = async () => {
       const results = await fetchItemByName(selectedItem);
       setDetailItem(results);
@@ -16,5 +17,5 @@ export const useSelectedItem = () => {
     fetchData();
   }, [selectedItem]);
 
-  return { setSelectedItem, detailItem };
+  return { setSelectedItem, detailItem, loading };
 };
