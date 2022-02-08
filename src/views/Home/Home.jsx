@@ -8,7 +8,6 @@ import PokmeonThumb from '../../components/PokemonThumb/PokemonThumb';
 import Controls from '../../components/Controls/Controls';
 import { Link, Route, useHistory, useRouteMatch } from 'react-router-dom';
 import style from './Home.css';
-
 import PokemonDetails from '../PokemonDeatils/PokemonDetails';
 import ItemList from '../ItemList/ItemList';
 import { Switch } from 'react-router-dom';
@@ -19,7 +18,7 @@ export default function Home() {
   const [region, setRegion] = useState('kanto');
   const [loading, setLoading] = useState(true);
 
-  const histroy = useHistory();
+  const history = useHistory();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,7 +35,7 @@ export default function Home() {
   };
 
   const handleClick = () => {
-    histroy.push('/');
+    history.push('/');
   };
 
   if (loading) return <p>Loading...</p>;
@@ -67,9 +66,11 @@ export default function Home() {
         <Route exact path="/">
           <div className={style.home_Page}>Welcome to the Online Pokedex</div>
         </Route>
+
         <Route path="/items">
           <ItemList />
         </Route>
+
         <Route path="/:region/:name">
           <PokemonDetails />
         </Route>

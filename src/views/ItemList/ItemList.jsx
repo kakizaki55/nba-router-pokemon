@@ -2,19 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { fetchItems } from '../../services/fetchdata/fetchdata';
 import Item from '../../components/Item/Item';
 import style from './ItemList.css';
-import { fetchItemByName } from '../../services/fetchdata/fetchdata';
 import { Route, useRouteMatch, Link } from 'react-router-dom';
 import ItemDetails from '../../components/ItemDetails/ItemDetails';
+import { useSelectedItem } from '../../hooks/SelectedItem';
 
 export default function ItemList() {
-  const [fetchUrl, setFetchUrl] = useState('https://pokeapi.co/api/v2/item/');
-  const [itemList, setItemList] = useState([]);
-  const [selectedItem, setSelectedItem] = useState('');
-  const [detailItem, setDetailItem] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [pageCount, setPageCount] = useState(1);
 
   const { url } = useRouteMatch();
+
+  const [fetchUrl, setFetchUrl] = useState('https://pokeapi.co/api/v2/item/');
+  const [itemList, setItemList] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,14 +22,7 @@ export default function ItemList() {
     fetchData();
   }, [fetchUrl]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const results = await fetchItemByName(selectedItem);
-      setDetailItem(results);
-      setLoading(false);
-    };
-    fetchData();
-  }, [selectedItem]);
+  const { setSelectedItem, detailItem } = useSelectedItem();
 
   //handle click to make go back and forth from the 20 item page.
   const handleClick = (direction) => {
@@ -71,7 +62,7 @@ export default function ItemList() {
           {itemList.next ? (
             <button onClick={() => handleClick('next')}>next</button>
           ) : (
-            <div lassName={style.buttonPlace}></div>
+            <div className={style.buttonPlace}></div>
           )}
         </div>
       </div>
